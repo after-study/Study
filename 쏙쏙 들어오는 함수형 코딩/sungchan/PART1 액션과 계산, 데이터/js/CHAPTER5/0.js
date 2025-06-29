@@ -21,7 +21,7 @@ function update_shipping_icons() { // Action
 	for(var i = 0; i < buy_buttons.length; i++) {
 		var button = buy_buttons[i];
 		var item = button.item;
-		var overTwenty = totalOverTwenty(item.price, shopping_cart_total)
+		var overTwenty = gets_free_shipping(shopping_cart_total, item.price)
 		if(overTwenty)
 			button.show_free_shipping_icon();
 		else
@@ -29,8 +29,8 @@ function update_shipping_icons() { // Action
 	}
 }
 
-function totalOverTwenty(itemPrice, total) { // Calculation
-	return itemPrice + total >= 20
+function gets_free_shipping(total, item_price) { // Calculation
+	return item_price + total >= 20;
 }
 
 const TAX_RATE = 0.10
