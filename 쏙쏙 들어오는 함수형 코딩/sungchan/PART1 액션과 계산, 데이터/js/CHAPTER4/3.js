@@ -1,6 +1,6 @@
 // 1. 액션에서 계산 빼내기
 // 2. 액션에서 또 다른 계산 빼내기
-// 3. 연습 문제
+// 3. 연습 문제: 결제부서와 배송팀에서 사용할 코드 재사용성 높이기
 
 // 장바구니 제품과 금액 합계를 담고 있는 전역변수
 var shopping_cart = [] // Action
@@ -33,18 +33,18 @@ function update_shipping_icons() { // Action
 	}
 }
 
-function totalOverTwenty(itemPrice, total) { // Calculation
+function totalOverTwenty(itemPrice, total) { // Calculation // 배송팀에서 무료배송 확인을 위해 사용
 	return itemPrice + total >= 20
 }
 
 const TAX_RATE = 0.10
 
-function update_tax_dom() { // Action
+function update_tax_dom() { // Action 
 	var cart_total_with_tax = calc_tax(shopping_cart_total, TAX_RATE)
 	set_tax_dom(cart_total_with_tax)
 }
 
-function calc_tax(amount, tax_rate) { // Calculation
+function calc_tax(amount, tax_rate) { // Calculation // 결제 부서에서 세금 계산 코드에 사용
 	return amount * tax_rate
 }
 
