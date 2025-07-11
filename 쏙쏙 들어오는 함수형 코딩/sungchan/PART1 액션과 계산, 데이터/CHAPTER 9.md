@@ -29,7 +29,7 @@ CHAPTER 9 계층형 설계 2
 ### 추상화 벽으로 구현을 감춥니다
 추상화 벽은 세부 구현을 감춘 함수로 이루어진 계층입니다.
 
-![[Pasted image 20250711124023.png]](<img width="881" height="649" alt="Image" src="https://github.com/user-attachments/assets/84a2ed76-bc04-4e44-b42e-7ec5a553995c" />)
+<img width="881" height="649" alt="20250711124023" src="https://github.com/user-attachments/assets/84a2ed76-bc04-4e44-b42e-7ec5a553995c" />
 
 함수형 프로그래머는 문제를 높은 수준으로 생각하기 위해 추상화 벽을 효과적인 도구로 사용합니다.
 
@@ -60,7 +60,7 @@ function indexOfItem(cart, name) {
 
 ### 연습 문제
 - 장바구니 데이터 구졸르 해시 맵으로 바꾸려면 어떤 함수를 고쳐야 할까요?
-![[Pasted image 20250711124629.png]](<img width="854" height="301" alt="Image" src="https://github.com/user-attachments/assets/e6eee58c-a795-4ee4-8f4f-c145d11ac6b5" />)
+<img width="854" height="301" alt="20250711124629" src="https://github.com/user-attachments/assets/e6eee58c-a795-4ee4-8f4f-c145d11ac6b5" />
 - 추상화 벽에 있는 함수들을 고쳐야 합니다. 나머지 함수는 장바구니가 배열이라는 것을 모릅니다.
 
 ### 장바구니를 객체로 다시 만들기

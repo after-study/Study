@@ -16,7 +16,7 @@ CHAPTER 8 계층형 설계 1
 계층형 설계는 바로 아래 계층의 함수로 지금 계층의 함수를 만드는 방법
 
 - 계층 다이어그램 또는 호출 그래프
-![호출그래프](<img width="759" height="319" alt="Image" src="https://github.com/user-attachments/assets/321a433f-e6a6-400b-acb9-bb51acf5f2dd" />)
+<img width="759" height="319" alt="20250708223803" src="https://github.com/user-attachments/assets/321a433f-e6a6-400b-acb9-bb51acf5f2dd" />
 
 
 ### 설계 감각을 키우기
@@ -139,16 +139,16 @@ function isInCart(cart, name) {
 
 #### 호출 그래프를 만들어 함수 호출을 시각화하기
 - 호출 그래프로 살펴보겠습니다.
-![[Pasted image 20250709075236.png]](<img width="637" height="337" alt="Image" src="https://github.com/user-attachments/assets/c3e7ddbf-84b7-46b4-9b42-a79736ce6cf6" />)
+<img width="637" height="337" alt="20250709075236" src="https://github.com/user-attachments/assets/c3e7ddbf-84b7-46b4-9b42-a79736ce6cf6" />
 
 - `make_item()` 함수와 `add_item()` 함수는 직접 만든 함수이고, `array_index()`와 `for loop`은 언어에서 제공하는 기능입니다. 추상화 수준이 다르므로 다이어그램으로 표현하면 아래와 같습니다.
-![[Pasted image 20250709075340.png]](<img width="1418" height="496" alt="Image" src="https://github.com/user-attachments/assets/ca3183ed-e46a-4c27-a060-a5092e8d5d5e" />)
+<img width="1418" height="496" alt="20250709075340" src="https://github.com/user-attachments/assets/ca3183ed-e46a-4c27-a060-a5092e8d5d5e" />
 
 #### 직접 구현 패턴을 사용하면 비슷한 추상화 계층에 있는 함수를 호출합니다.
 서로 다른 추상화 단계에 있는 기능을 사용하면 직접 구현 패턴이 아닙니다. 
 개선된 `freeTieClip()` 함수를 호출 그래프로 그려봅시다.
 
-![[Pasted image 20250709075835.png]](<img width="545" height="281" alt="Image" src="https://github.com/user-attachments/assets/8a12fc85-be38-473e-9b5d-a8370e77d2a3" />)
+<img width="545" height="281" alt="20250709075835" src="https://github.com/user-attachments/assets/8a12fc85-be38-473e-9b5d-a8370e77d2a3" />
 
 #### remove_item_by_name() 함수 그래프 그려보기
 ```js
@@ -163,10 +163,10 @@ function remove_item_by_name(cart, name) {
     return cart;
 }
 ```
-![[Pasted image 20250710104414.png]](<img width="427" height="229" alt="Image" src="https://github.com/user-attachments/assets/fd5f9f86-a5c0-4d43-acb1-e89a623397fc" />)
+<img width="427" height="229" alt="20250710104414" src="https://github.com/user-attachments/assets/fd5f9f86-a5c0-4d43-acb1-e89a623397fc" />
 
 `freeTieClip()`함수 그래프 옆에 붙여 전체 그래프를 확장해 봅시다. `remove_item_by_name()`함수는 어느 계층에 붙여야 할까요?
-![[Pasted image 20250710104638.png]](<img width="833" height="347" alt="Image" src="https://github.com/user-attachments/assets/e929aad0-5760-47ab-b9fb-824470d4a5f5" />)
+<img width="833" height="347" alt="20250710104638" src="https://github.com/user-attachments/assets/e929aad0-5760-47ab-b9fb-824470d4a5f5" />
 
 - 가장 높은 곳에 새로운 계층
 - 가장 높은 계층
@@ -180,10 +180,10 @@ function remove_item_by_name(cart, name) {
 4. 따라서 화살표가 아래쪽을 향해야 한다는 규칙을 지키기 위해 `remove_item_by_name()` 함수는 가장 높은 계층 보다 아래에 있어야 합니다.
 5. 가장 낮은 계층에 있는 함수 이름을 보면 장바구니와 제품을 다루는 함수 이름입니다. `remove_item_by_name()` 함수도 장바구니를 다루기 때문에 괜찮은 위치인 것 같습니다.
 6. 가장 낮은 계층에서 `remove_item_by_name()` 함수를 호출할 일은 없기 때문에 가장 낮은 곳 아래 새로운 계층을 만드는 후보는 지워도 됩니다.
-![[Pasted image 20250710202929.png]](<img width="769" height="306" alt="Image" src="https://github.com/user-attachments/assets/0535f381-86f6-41b0-9a32-8771172dd014" />)
+<img width="769" height="306" alt="20250710202929" src="https://github.com/user-attachments/assets/0535f381-86f6-41b0-9a32-8771172dd014" />
 7. 사이에 새로운 계층은 지워도 될지 확실하지 않습니다.
 8. 가장 낮은 계층에 있는 함수가 어떤 함수나 언어 기능을 호출하는지 봅시다.
-![[Pasted image 20250710205742.png]](<img width="781" height="408" alt="Image" src="https://github.com/user-attachments/assets/d7bce9e1-1083-4bd0-bab7-767e7b12e5cf" />)
+<img width="781" height="408" alt="20250710205742" src="https://github.com/user-attachments/assets/d7bce9e1-1083-4bd0-bab7-767e7b12e5cf" />
 9. `isInCart()`함수와 `remove_item_by_name()`함수는 모두 같은 박스를 가리키고 있습니다.
 10. 같은 박스를 가리킨다는 것은 같은 계층에 있어도 좋다는 정보입니다.
 11. 지금은 `remove_item_by_name()`함수를 `isInCart()`와 `make_item()`, `add_item()`함수가 있는 가장 낮은 계층에 놓는 것이 좋을 것 같습니다.
@@ -217,14 +217,14 @@ function cartTax(cart) {
   return calc_tax(calc_total(cart));
 }
 ```
-![[Pasted image 20250710210206.png]](<img width="618" height="271" alt="Image" src="https://github.com/user-attachments/assets/4afdf884-fbd0-4649-9724-80eff3aa52d7" />)
+<img width="618" height="271" alt="20250710210206" src="https://github.com/user-attachments/assets/4afdf884-fbd0-4649-9724-80eff3aa52d7" />
 
-![[Pasted image 20250710210221.png]](<img width="866" height="595" alt="Image" src="https://github.com/user-attachments/assets/f6188cbc-e6a7-4b38-8855-f4264061a869" />)
+<img width="866" height="595" alt="20250710210221" src="https://github.com/user-attachments/assets/f6188cbc-e6a7-4b38-8855-f4264061a869" />
 
 #### 같은 계층에 있는 함수는 같은 목적을 가져야 합니다.
 다이어그램은 명확하고 모호한 것이 없는 여섯 개의 계층으로 되어있습니다. 
 각 계층의 목적을 그래프에 표시해 봅시다.
-![[Pasted image 20250710210404.png]](<img width="860" height="415" alt="Image" src="https://github.com/user-attachments/assets/41387398-52a9-44bc-966c-ed0019861e0e" />)
+<img width="860" height="415" alt="20250710210404" src="https://github.com/user-attachments/assets/41387398-52a9-44bc-966c-ed0019861e0e" />
 
 각 계층은 추상화 수준이 달라서 어떤 계층에 있는 함수를 읽거나 고칠 때 낮은 수준의 구체적인 내용은 신경 쓰지 않아도 됩니다.
 다이어그램은 코드를 높은 차원에서 볼 수 있는 좋은 도구 입니다.
@@ -245,19 +245,19 @@ function cartTax(cart) {
 
 #### 계층 줌 레벨로 보면 함수가 가리키는 화살표를 계층간에 비교할 수 있습니다.
 장바구니 기본 동작 계층을 계층 줌 레벨로 살펴 봅시다.
-![[Pasted image 20250710211000.png]](<img width="804" height="305" alt="Image" src="https://github.com/user-attachments/assets/416cf7fd-8527-4d6b-b626-641b39e627eb" />)
+<img width="804" height="305" alt="20250710211000" src="https://github.com/user-attachments/assets/416cf7fd-8527-4d6b-b626-641b39e627eb" />
 
 직접 구현 패턴을 사용하면 모든 화살표가 같은 길이를 가져야 합니다. 하지만, 위 다이어그램을 보면 어떤 화살표는 한 계층 길이를 가지고 있고, 어떤 화살표는 세 계층 길이를 가지고 있습니다.
 이렇게 다양한 계층을 넘나드는 것은 같은 구체화 수준이 아니라는 증거입니다.
 
 #### 함수 줌 레벨을 사용하면 함수 하나가 가진 화살표를 비교할 수 있습니다.
 `remove_item_by_name()`함수를 확대해 봅시다.
-![[Pasted image 20250710211217.png]](<img width="799" height="241" alt="Image" src="https://github.com/user-attachments/assets/9d381eaf-0a12-4ba0-9f17-51328520cacd" />)
+<img width="799" height="241" alt="20250710211217" src="https://github.com/user-attachments/assets/9d381eaf-0a12-4ba0-9f17-51328520cacd" />
 
 다른 두 계층에 있는 동작을 사용하는 것은 직접 구현 패턴에 맞지 않습니다. 직접 구현 패턴을 적용하면 `remove_item_by_name()`가 모두 같은 길이의 화살표를 가져야 합니다.
 가장 일반적인 방법은 중간에 함수를 두고 언어 기능을 사용하는 긴 화살를 줄여야 합니다.
 `removeItems()`함수와 같은 계층에 반복문과 배열 인덱스 참조를 담당하는 함수를 만들면 모든 화살표 길이가 같아질 것입니다.
-![[Pasted image 20250711072724.png]](<img width="859" height="243" alt="Image" src="https://github.com/user-attachments/assets/dfeba766-99e2-4820-b1bc-a990fefeda82" />)
+<img width="859" height="243" alt="20250711072724" src="https://github.com/user-attachments/assets/dfeba766-99e2-4820-b1bc-a990fefeda82" />
 
 ### 반복문 빼내기
 `remove_item_by_name()` 함수에서 반복문을 빼서 새로운 함수로 만들어 봅시다.
@@ -291,7 +291,7 @@ function indexOfItem(cart, name) {
 }
 ```
 - 호출 그래프
-![[Pasted image 20250711074638.png]](<img width="898" height="248" alt="Image" src="https://github.com/user-attachments/assets/8755cf6a-cddc-4a38-a421-b28359b67976" />)
+<img width="898" height="248" alt="20250711074638" src="https://github.com/user-attachments/assets/8755cf6a-cddc-4a38-a421-b28359b67976" />
 
 엄밀히 말하면 `indexOfItem()` 함수가 `removeItems()`함수보다 조금 더 위에 위치합니다.
 `indexOfItem()`함수는 배열에 있는 항목이 `name` 속성을 가지고 있다는 것을 알아야합니다.
@@ -334,7 +334,7 @@ function indexOfItem(cart, name) {
 }
 ```
 
-![[Pasted image 20250711075832.png]](<img width="790" height="236" alt="Image" src="https://github.com/user-attachments/assets/cc620866-651b-40b4-8ed9-e9ee314bc356" />)
+<img width="790" height="236" alt="20250711075832" src="https://github.com/user-attachments/assets/cc620866-651b-40b4-8ed9-e9ee314bc356" />
 재사용으로 코드가 더 짧아지고 계층도 명확해지는 장점을 모두 얻었습니다.
 
 ### 연습 문제
@@ -378,7 +378,7 @@ function indexOfItem(cart, name) {
 }
 ```
 
-![[Pasted image 20250711080201.png]](<img width="828" height="245" alt="Image" src="https://github.com/user-attachments/assets/0cb64aa3-c306-4c43-9ce0-b6585ec3ad06" />)
+<img width="828" height="245" alt="20250711080201" src="https://github.com/user-attachments/assets/0cb64aa3-c306-4c43-9ce0-b6585ec3ad06" />
 반복문을 없앴기 때문에 코드가 더 좋아졌습니다. 하지만 그래프는 더 좋아진 것 같지 않습니다.
 함수가 가리키는 화살표의 길이를 비교하는 것은 복잡성을 측정하는 좋은 방법이지만, 이 경우는 크게 도움이 되지 않습니다.
 대신 긴 화살표를 하나 없애 설계를 개선한 것에 초점을 맞춰 봅시다. 화살표 길이를 줄이는 것에 집중하면 더 좋은 계층 구조를 만들 수 있습니다.
@@ -418,10 +418,10 @@ function arraySet(array, idx, value) {
 }
 ```
 
-![[Pasted image 20250711081256.png]](<img width="824" height="258" alt="Image" src="https://github.com/user-attachments/assets/b379016d-8079-4cec-9333-d59c6d56f292" />)
+<img width="824" height="258" alt="20250711081256" src="https://github.com/user-attachments/assets/b379016d-8079-4cec-9333-d59c6d56f292" />
 
 계층이 하나 늘었지만 화살표 길이가 더 짧아졌습니다. 지금은 화살표 수보다 길이를 줄이고 있다는 것을 기억하세요.
-하지만 개선한 함수도 직접 구현 패턴을 적용한 것 같지 않습니다. 여전히 낮은 수준의 배열 인덱스를 참조하는 동작을 그대로 쓰고 있습니다. 이런 느낌이 중요합니다. 일단 지금은 그대로 두고 다음 장에서 추상화 벽 패턴을 적용해 더 명확한 코드를 만들어 보겠습니다. [[[CHAPTER 10]] 에서 직접 구현을 위한 더 좋을 기술을 알려드리겠습니다.
+하지만 개선한 함수도 직접 구현 패턴을 적용한 것 같지 않습니다. 여전히 낮은 수준의 배열 인덱스를 참조하는 동작을 그대로 쓰고 있습니다. 이런 느낌이 중요합니다. 일단 지금은 그대로 두고 다음 장에서 추상화 벽 패턴을 적용해 더 명확한 코드를 만들어 보겠습니다. [[CHAPTER 10]] 에서 직접 구현을 위한 더 좋을 기술을 알려드리겠습니다.
 
 ### 직접 구현 패턴 리뷰
 #### 직접 구현한 코드는 한 단계의 구체화 수준에 관한 문제만 해결합니다.
