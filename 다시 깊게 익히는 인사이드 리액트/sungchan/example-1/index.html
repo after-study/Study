@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Loading Simulation</title>
+    <style>
+        .image-container {
+            min-height: 400px;
+            margin: 50px 0;
+            background: #f0f0f0;
+            position: relative;
+        }
+        
+        .controls {
+            position: fixed;
+            z-index: 1;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .lazy-image {
+            width: 100%;
+            min-width: 100%;
+            min-height: 400px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .network-indicator {
+            position: fixed;
+            z-index: 1;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 네트워크 속도 상태를 시뮬레이션하기 위한 속도 표시기입니다. -->
+    <div class="network-indicator">
+        Network Speed: <span id="networkSpeed">Fast 3G</span>
+    </div>
+
+    <div class="controls">
+        <h3>Simulation Controls</h3>
+        <div>
+            <label>Network Speed:</label>
+            <!-- 사용자는 네트워크 속도를 셀렉트 박스를 통해 선택할 수 있습니다. -->
+            <select id="networkSelect">
+                <option value="fast3g">Fast 3G</option>
+                <option value="slow3g">Slow 3G</option>
+                <option value="2g">2G</option>
+            </select>
+        </div>
+        <div style="margin-top: 10px;">
+            <!-- 재실험을 위해 resetSimuation() 함수를 만들었습니다. -->
+            <button onclick="resetSimulation()">Reset Images</button>
+        </div>
+    </div>
+    <!-- 이미지 엘리먼트가 그려질 div 태그입니다. -->
+    <div id="imageContainer"></div>
+
+    <script>
+        class LazyImageLoader {
+            #loadingStates; // 1. 어떤 image 엘리먼트에 로딩 효과가 필요한지 저장하는 내부 상탯값
+
+            constructor(options = {}) {
+                this.options = {  // 2. options의 기본 속성 초기화
+                    blurEffect: options.blurEffect || false, // 블러 효과를 보여줄지 결정
+                    loadingIndicator: options.loadingIndicator || false, // 로딩 스피너를 보여줄지 결정
+                    ...options
+                }
+
+                this.observer = new IntersectionObserver( // 화면에 엘리먼트가 노출되는지 확인
+                    this.#handleIntersection.bind(this),
+                    {
+                        root: this.options.root,
+                        rootMargin: this.options.rootMargin,
+                        threshold: this.options.threshold
+                    }
+                )
+
+                this.#loadingStates = new WeakMap() // 가비지 콜렉터를 사용해 불필요한 상탯값이 더 이상 메모리에 저장하지 않게 함
+            }
+
+            // 3. DOM API인 querySelectorAll을 사용해 image 태그를 지정 및 이미지 다운로드 시작
+            observe(selector) {
+                const images = document.querySelectorAll(selector)
+                images.forEach(img => this.#setupImage(img))
+            }
+
+            #handleIntersection() {}
+
+            #setupImage() {} // 지연 로딩 설정 수행
+        }
+    </script>
+</body>
+</html>
