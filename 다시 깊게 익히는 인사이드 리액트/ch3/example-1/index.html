@@ -94,9 +94,9 @@
                 this.observer = new IntersectionObserver( // 인터섹션옵저버를 사용해 화면에 엘리먼트가 노출되었는지 확인합니다.
                     this.#handleIntersection.bind(this),
                     {
-                        root: this.options.root,
-                        rootMargin: this.options.rootMargin,
-                        threshold: this.options.threshold
+                        root: this.options.root, // 브라우저 뷰포트가 기본, 타겟 요소의 사우이 요소이어야 함
+                        rootMargin: this.options.rootMargin, // 루트 주위의 여백. 
+                        threshold: this.options.threshold // 관찰자의 콜백이 무조건 실행되어야 하는 대상의 가시성 백분율
                     }
                 );
 
