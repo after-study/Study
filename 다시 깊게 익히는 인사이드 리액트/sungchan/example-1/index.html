@@ -101,6 +101,48 @@
 
             #setupImage() {} // 지연 로딩 설정 수행
         }
+
+        // 1. LazyImageLoader 생성자 파라미터를 사용해 시프너의 색상과 블러 이팩트 사용 유무 적용
+        const loader = new LazyImageLoader({
+            blurEffect: true,
+            loadingIndicator: true,
+            blurAmount: '10px',
+            loadingSpinnerColor: 'gree'
+        })
+
+        // 2. 인자로 전달된 count 개수만큼의 image 엘리먼트를 생성
+        function generateImages(count = 10) {
+            const container = document.getElementById('imageContainer')
+            container.innerHTML = ''
+
+            for (let i = 0; i < count; i++) {
+                const wrapper = document.createElement('div')
+                wrapper.className = 'image-container'
+                // image 엘리먼트를 생성하고 클래스와 내려받을 이미지 등록
+                const img = document.createElement('img')
+                img.className = 'lazy-image'
+                img.src = `https://picsum.photos/800/400`
+                img.alt = `Lazy loaded image ${i + 1}`
+                
+                wrapper.appendChild(img) // 부모 엘리먼트에 image 엘리먼트 등록
+                container.appendChild(wrapper)
+            }
+            // 앞서 생성한 image 엘리먼트 대상으로 지연 로딩 적용
+            loader.observe('.lazy-image')
+        }
+
+        // 네트워크 속도를 시뮬레이션 하기 위해 셀렉트 박스를 변경했을 경우 현재 네트워크 속도를 화면에 업데이트 해줍니다.
+        document.getElementById('networkSelect').addEventListener('change', function() {
+            document.getElementById('networkSpeed').textContent = 
+                this.options[this.selectedIndex].text;
+        });
+
+        // 시뮬레이션을 처음부터 다시 시작하기 위해 다시 이미지 엘리먼트를 초기화 시킵니다.
+        function resetSimulation() {
+            generateImages();
+        }
+
+        generateImages()
     </script>
 </body>
 </html>
