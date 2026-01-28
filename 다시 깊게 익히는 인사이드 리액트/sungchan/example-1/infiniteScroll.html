@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card {
+            padding: 2rem;
+            height: 200px;
+            font-size: 2rem;
+            list-style: none;
+            border-radius: 1rem;
+            border: 1px solid #ccc;
+            transform: translateX(200px);
+            transition: 150ms ease-in-out all;
+
+            transform: translateX(200px);
+            transition: 150ms ease-in-out all;
+        }
+
+        .card.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <ul class="container">
+      <li class="card">아이템 1</li>
+      <li class="card">아이템 2</li>
+      <li class="card">아이템 3</li>
+      <li class="card">아이템 4</li>
+      <li class="card">아이템 5</li>
+      <li class="card">아이템 6</li>
+      <li class="card">아이템 7</li>
+      <li class="card">아이템 8</li>
+      <li class="card">아이템 9</li>
+      <li class="card">아이템 10</li>
+    </ul>
+    <script>
+        const $container = document.querySelector(".container")
+        let itemIndex = 11
+
+        // 무한 스크롤을 위한 옵저버
+        const lastObserver = new IntersectionObserver((entries) => {
+            console.log('entries:', entries)
+            const lastItem = entries[0]
+            if (!lastItem.isIntersecting) {
+                return
+            }
+            // 2. 마지막 요소가 나타났다면, fetchItem 함수로 추가적인 아이템을 불러옵니다.
+            else {
+                fetchItem()
+                // 3. 기존 마지막 요소의 인터섹션 감지를 해제하고, 새롭게 생성된 마지막 요소에의 인터섹션 여부를 감지합니다. 
+                lastObserver.unobserve(lastItem.target)
+                lastObserver.observe(document.querySelector('.card:last-child'))
+            }
+        })
+
+        // 1. 처음 한번 마지막 요소의 인터섹션 여부를 감지합니다.
+        lastObserver.observe(document.querySelector('.card:last-child'))
+
+        // 요소 추가를 위한 함수
+        const fetchItem = () => {
+            for (let index = itemIndex; index < itemIndex + 10; index++) {
+                const newElement = document.createElement("div")
+                newElement.textContent = `아이템 ${index}`
+                newElement.classList.add("card")
+                $container.append(newElement)
+            }
+            itemIndex += 10
+        }
+    </script>
+</body>
+</html>
